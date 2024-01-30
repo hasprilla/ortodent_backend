@@ -39,3 +39,5 @@ class RegisteredUserController extends Controller
         return response()->noContent();
     }
 }
+
+
