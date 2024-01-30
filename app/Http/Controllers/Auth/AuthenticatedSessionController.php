@@ -21,9 +21,8 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         $token = $request->user()->createToken($request->email);
-        
         return response()->json([ 
-            'token' => $token->plainTextToken, 
+            'jwt' => $token->plainTextToken, 
             'user' => $request->user(), 
         ]);
     }
