@@ -42,7 +42,7 @@ class RegisteredUserController extends Controller
 
         return response()->json([
             'jwt' => $token->plainTextToken,
-            'user' => $request->user(),
+            // 'user' => $request->user(),
         ]);
     }
 }
