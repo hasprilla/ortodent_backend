@@ -39,10 +39,10 @@ class RegisteredUserController extends Controller
 
 
         $token = $request->user()->createToken($request->email);
-        
+
         return response()->json([
             'jwt' => $token->plainTextToken,
-            // 'user' => $request->user(),
+            'user' => $request->user(),
         ]);
     }
 }
