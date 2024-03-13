@@ -16,15 +16,26 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): JsonResponse
     {
-        $request->authenticate();
 
-        $request->session()->regenerate();
+        // return response()->json([
+        //     'authenticated' =>  'false'
+        // ], 401);
+        
+      $auth =  $request->authenticate();
 
-        $token = $request->user()->createToken($request->email);
-        return response()->json([
-            'jwt' => $token->plainTextToken,
-            // 'user' => $request->user(),
-        ]);
+      return response()->json([
+        'authenticated' =>  $auth
+      ]);
+
+        // $request->session()->regenerate();
+
+        // $token = $request->user()->createToken($request->email);
+
+        // return response()->json([
+        //     'jwt' => $token->plainTextToken,
+        //     // 'user' => $request->user(),
+        //     'authenticated' =>  $request->authenticate()
+        // ]);
     }
 
     /**
